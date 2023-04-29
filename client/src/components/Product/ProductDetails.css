@@ -1,0 +1,208 @@
+.productDetails{
+    width: 100vw;
+    max-width: 100%;
+    padding: 10rem;
+    display: flex;
+    box-sizing: border-box;
+}
+.productDetails > div{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+    flex-direction: column;
+}
+.productDetails > div:last-child{
+    align-items: flex-start;
+}
+.css-ohwg9z{
+    width: 100%;
+}
+.productImage{
+    width: 400px !important;
+    height: 400px !important;
+    display: block;
+    margin: 0 auto;
+}
+.detailsBlock1 > h2{
+    color: rgb(54, 54, 54);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.detailsBlock1 > p{
+    color: rgba(54, 54, 54, 0.567);
+    font-size: 1.3rem;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+.detailsBlock2{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 70%;
+}
+.detailsBlock2 span{
+    font-size: 1.2rem;
+    margin-left: .2rem;
+    font-family: cursive;
+}
+.detailsBlock3{
+    width: 70%;
+}
+.detailsBlock3 h1{
+    font-size: 2rem;
+    color: rgb(17, 17, 17,0.795);
+    font-weight: 800;
+    font-family: Quicksand;
+    margin: 1rem 0;
+}
+.detailsBlock3-1{
+    display: flex;
+    align-items: center;
+}
+.detailsBlock3-1-1 > button{
+    background-color: rgba(0,0,0,0.616);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    transition: 0.1s all ease;
+    color: #fff;
+}
+.detailsBlock3-1-1 > button:hover{
+    background-color: rgba(0,0,0,0.797);
+}
+.detailsBlock3-1-1 > input{
+    width: 2rem;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+}
+.detailsBlock3-1 > button:last-child, .submitReview{
+    margin-left: 2rem;
+    outline: none;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background-color: tomato;
+    color: #fff;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    margin: 1rem;
+}
+.detailsBlock3-1 > button:last-child:hover{
+    background-color: rgb(214,84,81);
+}
+.detailsBlock3 p{
+    font-size: 1.3rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.205);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+    margin: 1rem 0;
+    padding: 1rem 0;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.497);
+}
+.detailsBlock4{
+    color: rgba(0, 0, 0, 0.897);
+    font-size: 1.6rem;
+}
+.detailsBlock4 > p{
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.534);
+}
+.submitReview{
+    margin-left: 0;
+}
+.submitReview:hover{
+    background-color: rgb(214,84,81);
+    transform: scale(1.1);
+}
+
+.reviews{
+    display: flex;
+    overflow: auto;
+}
+
+.reviewHeading{
+    text-align: center;
+    font-family: 'Roboto',  'Courier New', Courier, monospace;
+    font-size: 3rem;
+    border-bottom: 1px solid rgba(21,21,21,0.5);
+    font-weight: 600;
+    padding: 1.5rem;
+    margin: 5rem auto;
+    margin-top: 2rem;
+    width: 30%;
+}
+
+.reviewCard{
+    flex: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    flex-direction: column;
+    width: 30rem;
+    margin: 1rem;
+}
+
+.reviewCard img{
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+}
+
+.reviewCard h2{
+    font-size: 1.6rem;
+}
+
+.reviewCard p{
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.836);
+}
+@media screen and (max-width: 600px){
+    .productDetails{
+        flex-direction: column;
+        height: unset;
+        padding: 4rem;
+    }
+    .productDetails > div{
+        width: auto;
+    }
+    .productImage{
+        width: 200px !important;
+        height: 200px !important;
+    }
+    .detailsBlock1 > h2{
+        font-size: 2rem;
+    }
+    .detailsBlock1 > p{
+        font-size: 1rem;
+    }
+    .detailsBlock3-1{
+        flex-direction: column;
+        align-items:flex-start;
+    }
+    .detailsBlock3-1 > button:last-child{
+        margin-left: 0;
+    }
+    .detailsBlock3{
+        width: 100%;
+    }
+    .detailsBlock2{
+        padding: 0.3rem;
+        margin-top: 0.4rem;
+    }
+    .reviewCard{
+        width: 20rem;
+    }
+}

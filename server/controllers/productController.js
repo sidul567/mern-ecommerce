@@ -14,19 +14,26 @@ const createProduct = catchAsyncError(async (req,res,next)=>{
 })
 
 const getAllProduct = catchAsyncError(async (req,res, next)=>{
-    const resultPerPage = 5;
+    const resultPerPage = 8;
     const productCount = await Product.countDocuments();
     const apiFeatures = new ApiFeatures(Product.find(),req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage)
-    ;
-    const products = await apiFeatures.query;
+    .filter();
+
+    let products = await apiFeatures.query;
+
+    let filterProductCount = products.length;
+
+    apiFeatures.pagination(resultPerPage);
+
+    products = await apiFeatures.query.clone();
 
     res.status(201).json({
         success: true,
         products,
-        productCount
+        productCount,
+        resultPerPage,
+        filterProductCount,
     })
 }) 
 
@@ -83,9 +90,9 @@ const createProductReview = catchAsyncError(async (req, res, next)=>{
 
     if(isReviewed){
         product.reviews.forEach((rev)=>{
-            if(rev.user.toString() === req.user.id){
-                review.rating = rating;
-                review.comment = comment;
+            if(rev.user.toString() === req.user.id.toString()){
+                rev.rating = rating;
+                rev.comment = comment;
             }
         })
     }else{
@@ -108,6 +115,50 @@ const createProductReview = catchAsyncError(async (req, res, next)=>{
     })
 })
 
+const getAllReviews = catchAsyncError(async (req, res, next)=>{
+    const product = await Product.findById(req.query.productId);
+
+    if(!product){
+        return next(new ErrorHandler("Product not found!",404));
+    }
+
+    res.status(200).json({
+        success: true,
+        reviews: product.reviews,
+    })
+})
+
+const deleteReview = catchAsyncError(async (req, res, next)=>{
+    const product = await Product.findById(req.query.productId);
+
+    if(!product){
+        return next(new ErrorHandler("Product not found!",404));
+    }
+
+    const reviews = product.reviews.filter((review)=>review._id.toString() !== req.query.reviewId.toString());
+
+    let sum = 0;
+    reviews.forEach((rev)=>{
+        sum += rev.rating;
+    })
+
+    const ratings = sum / reviews.length;
+
+    const numberOfReviews = reviews.length;
+
+    const updatedProduct = await Product.findByIdAndUpdate(req.query.productId,{
+        ratings, reviews, numberOfReviews
+    },{
+        new: true,
+        runValidators: true,
+    })
+
+    res.status(200).json({
+        success: true,
+        updatedProduct,
+    })
+})
+
 module.exports = {
     getAllProduct,
     createProduct,
@@ -115,4 +166,6 @@ module.exports = {
     deleteProduct,
     getProductDetails,
     createProductReview,
+    getAllReviews,
+    deleteReview,
 }

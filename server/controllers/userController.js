@@ -4,77 +4,74 @@ const catchAsyncError = require('../middlewares/catchAsyncError');
 const sendToken = require('../utilities/jwtToken');
 const { sendEmail } = require('../utilities/sendEmail');
 const crypto = require('crypto');
+const cloudinary = require('cloudinary').v2;
 
-const registerUser = catchAsyncError(async (req,res,next)=>{
-    const {name, email, password} = req.body;
-
+const registerUser = catchAsyncError(async (req, res, next) => {
+    const { name, email, password } = req.body;
+    const myCloud = await cloudinary.uploader.upload(req.files[0].path,{'folder': 'avatars',});
+    
     const user = await User.create({
         name, email, password,
         avatar: {
-            public_id: "sample id",
-            url: "sample url"
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
         }
     })
 
-    const token = user.getJWTToken();
-
-    res.status(201).json({
-        success: true,
-        token,
-    })
+    sendToken(user, 200, res);
 })
 
-const loginUser = catchAsyncError(async (req, res, next)=>{
-    const {email, password} = req.body;
+const loginUser = catchAsyncError(async (req, res, next) => {
+    const { email, password } = req.body;
 
-    if(!email || !password){
+    if (!email || !password) {
         return next(new ErrorHandler("Please enter email and password!", 401));
     }
 
-    const user = await User.findOne({email}).select("+password");
+    const user = await User.findOne({ email }).select("+password");
 
-    if(!user){
+    if (!user) {
         return next(new ErrorHandler("Invalid email or password!", 401));
     }
 
     const isMatchedPassword = await user.comparePassword(password);
 
-    if(!isMatchedPassword){
+    if (!isMatchedPassword) {
         return next(new ErrorHandler("Invalid email or password!", 401));
     }
 
-    sendToken(user,200,res);
+    sendToken(user, 200, res);
 })
 
-const logoutUser = catchAsyncError(async (req, res, next)=>{
-    res.cookie("token",null,{
+const logoutUser = catchAsyncError(async (req, res, next) => {
+    res.cookie("token", null, {
         expires: new Date(Date.now()),
         httpOnly: true,
     });
-    
+
     res.status(200).json({
         success: true,
         message: "Logged out!"
     })
 })
 
-const forgetPassword = catchAsyncError(async (req, res, next)=>{
-    const user = await User.findOne({email: req.body.email});
+const forgetPassword = catchAsyncError(async (req, res, next) => {
+    const user = await User.findOne({ email: req.body.email });
 
-    if(!user){
+    if (!user) {
         return next(new ErrorHandler("Invalid email or password!", 401));
     }
 
     // get reset password token
     const resetPasswordToken = user.getResetPasswordToken();
 
-    await user.save({validateBeforeSave: false});
+    await user.save({ validateBeforeSave: false });
 
     const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetPasswordToken}`;
 
     const message = `Your password reset link is: \n\n${resetPasswordUrl}\n\nIf you aren't sent this request then ignore it. Link will be destroy after 15 minutes!`;
 
-    try{
+    try {
         sendEmail({
             email: user.email,
             subject: "Mern-eccomerce password recovery",
@@ -85,31 +82,31 @@ const forgetPassword = catchAsyncError(async (req, res, next)=>{
             success: true,
             message: `Email sent to ${user.email} successfully!`
         })
-    }catch(err){
+    } catch (err) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
 
-        await user.save({validateBeforeSave: false});
+        await user.save({ validateBeforeSave: false });
 
-        next(new ErrorHandler(err.message,500));
+        next(new ErrorHandler(err.message, 500));
     }
 })
 
-const resetPassword = catchAsyncError(async (req, res, next)=>{
+const resetPassword = catchAsyncError(async (req, res, next) => {
     // generate reset password token
     const resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest("hex");
 
     const user = await User.findOne({
         resetPasswordToken,
-        resetPasswordExpire: {$gt: Date.now()},
+        resetPasswordExpire: { $gt: Date.now() },
     })
 
-    if(!user){
-        return next(new ErrorHandler("Invalid or expired token!",400));
+    if (!user) {
+        return next(new ErrorHandler("Invalid or expired token!", 400));
     }
 
-    if(req.body.password !== req.body.confirmPassword){
-        return next(new ErrorHandler("Password don't match!",400));
+    if (req.body.password !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Password don't match!", 400));
     }
 
     user.password = req.body.password;
@@ -120,7 +117,7 @@ const resetPassword = catchAsyncError(async (req, res, next)=>{
     sendToken(user, 200, res);
 })
 
-const getUserDetails = catchAsyncError(async (req, res, next)=>{
+const getUserDetails = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id);
 
     res.status(200).json({
@@ -129,17 +126,17 @@ const getUserDetails = catchAsyncError(async (req, res, next)=>{
     })
 })
 
-const updatePassword = catchAsyncError(async (req,res,next)=>{
+const updatePassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");
 
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
-    if(!isPasswordMatched){
-        return next(new ErrorHandler("Old password don't match",400));
+    if (!isPasswordMatched) {
+        return next(new ErrorHandler("Old password don't match", 400));
     }
 
-    if(req.body.newPassword !== req.body.confirmPassword){
-        return next(new ErrorHandler("Password don't match",400));
+    if (req.body.newPassword !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Password don't match", 400));
     }
 
     user.password = req.body.newPassword;
@@ -151,13 +148,13 @@ const updatePassword = catchAsyncError(async (req,res,next)=>{
     })
 })
 
-const updateProfile = catchAsyncError(async (req,res,next)=>{
+const updateProfile = catchAsyncError(async (req, res, next) => {
     const updateUserData = {
         name: req.body.name,
         email: req.body.email
     }
 
-    const user = await User.findByIdAndUpdate(req.user.id,updateUserData,{
+    const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
         new: true,
         runValidators: true,
     })
@@ -168,7 +165,7 @@ const updateProfile = catchAsyncError(async (req,res,next)=>{
     })
 })
 
-const getAllUsers = catchAsyncError(async (req, res, next)=>{
+const getAllUsers = catchAsyncError(async (req, res, next) => {
     const users = await User.find();
 
     res.status(200).json({
@@ -177,7 +174,7 @@ const getAllUsers = catchAsyncError(async (req, res, next)=>{
     })
 })
 
-const getSingleUser = catchAsyncError(async (req, res, next)=>{
+const getSingleUser = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     res.status(200).json({
@@ -186,14 +183,14 @@ const getSingleUser = catchAsyncError(async (req, res, next)=>{
     })
 })
 
-const updateUserRole = catchAsyncError(async (req,res,next)=>{
+const updateUserRole = catchAsyncError(async (req, res, next) => {
     const updateUserData = {
         name: req.body.name,
         email: req.body.email,
         role: req.body.role
     }
 
-    const user = await User.findByIdAndUpdate(req.params.id,updateUserData,{
+    const user = await User.findByIdAndUpdate(req.params.id, updateUserData, {
         new: true,
         runValidators: true,
     })
@@ -204,11 +201,11 @@ const updateUserRole = catchAsyncError(async (req,res,next)=>{
     })
 })
 
-const deleteUser = catchAsyncError(async (req, res, next)=>{
+const deleteUser = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
-    if(!user){
-        return next(new ErrorHandler("User not found!",404));
+    if (!user) {
+        return next(new ErrorHandler("User not found!", 404));
     }
 
     await user.deleteOne();

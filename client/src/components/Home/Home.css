@@ -1,0 +1,131 @@
+.banner{
+    background-image: linear-gradient(to right, #635dc0, #3027ae);
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
+    font-family: 'Roboto' ,Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.banner > p{
+    font-weight: 300;
+    font-size: 2vmax;
+}
+
+.banner > h1{
+    font-weight: 600;
+    font-size: 4.5vmax;
+    margin: 5vmax;
+}
+
+.banner > a > button{
+    margin: 5rem;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 1px solid #fff;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.banner > a > button:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
+.banner::after{
+    content: '';
+    width: 100vw;
+    height: 100vmin;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    background-color: #fff;
+    clip-path: polygon(100% 88%, 0 100%, 100% 100%);
+}
+
+.homeHeading{
+    text-align: center;
+    font-family: 'Roboto',  'Courier New', Courier, monospace;
+    font-size: 3rem;
+    border-bottom: 1px solid rgba(21,21,21,0.5);
+    font-weight: 600;
+    padding: 1.5rem;
+    margin: 8rem auto;
+    width: 30%;
+}
+
+.container{
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.productCard{
+    width: 15vmax;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    text-decoration: none;
+    color: rgb(48, 48, 48);
+    padding: 2rem 2.5rem;
+    margin: 1rem;
+    transition: all 0.5s ease;
+    background-color: rgb(248, 248, 248);
+}
+
+.productCard:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transform: translateY(-1rem);
+}
+
+.productCard > img{
+    width: 14vmax;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.productCard > p{
+    font-size: 2.3rem;
+    margin-left: 1rem;
+}
+
+.productCard > div{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0.5rem;
+    margin-left: 1rem;
+    margin-right: 0;
+    gap: 0.3rem;
+}
+
+.productCard > div > span{
+    font-size: 1.2rem;
+}
+
+.productCard > span{
+    font-size: 2rem;
+    margin: 1rem 0.5rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    color: tomato;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+    .productCard{
+        width: 22vmax;
+        text-align: center;
+    }
+    .productCard > p{
+        font-size: 1.7rem;
+    }
+    .productCard > div{
+        flex-direction: column;
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,9 @@
+.speedDial{
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+
+#SpeedDialtooltipexample-actions > button > svg{
+    font-size: 2rem;
+}

@@ -1,0 +1,92 @@
+.productsHeading{
+    text-align: center;
+    font-family: 'Roboto',  'Courier New', Courier, monospace;
+    font-size: 3rem;
+    border-bottom: 1px solid rgba(21,21,21,0.5);
+    font-weight: 600;
+    padding: 1.5rem;
+    margin: 8rem auto;
+    width: 30%;
+}
+.productsContainer{
+    display: flex;
+}
+.productsContainer > .allProducts{
+    display: flex;
+    flex-wrap: wrap;
+    width: 113rem;
+}
+.productsContainer > .filterBox{
+    width: 18rem;
+    margin: 0 2rem;
+}
+.productsContainer > .filterBox > p{
+    font-size: 1.6rem;
+    font-family: Roboto;
+    font-weight: 600;
+}
+.productsContainer > .filterBox .MuiSlider-valueLabelLabel{
+    font-size: 1.1rem;
+}
+.productsContainer > .filterBox > .categoryBox{
+    list-style-type: none;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    color: rgb(0,0,0, 0.5);
+}
+.productsContainer > .filterBox > .categoryBox > .categoryItem{
+    padding: 0.3rem 0;
+    cursor: pointer;
+}
+.productsContainer > .filterBox > .categoryBox > .categoryItem:hover{
+    color: tomato;
+}
+.productsContainer > .filterBox > .categoryBox > .categoryItem.active{
+    color: tomato;
+}
+.productsContainer > .filterBox > fieldset{
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.287);
+}
+.productsContainer > .filterBox > fieldset > legend{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.paginationBox{
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+}
+.pagination{
+    display: flex;
+    list-style-type: none;
+}
+.page-item{
+    font-size: 1.6rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 1rem 2rem;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.page-item:hover:not(.pageItemActive){
+    background-color: rgb(230,230,230);
+}
+.page-item:first-child{
+    border-radius: 5px 0 0 5px;
+}
+.page-item:last-child{
+    border-radius: 0 5px 5px 0;
+}
+.page-item:not(:last-child){
+    border-right: none;
+}
+.page-link{
+    text-decoration: none;
+    color: rgb(80, 80, 80);
+}
+.pageItemActive{
+    background-color: tomato;
+}
+.pageLinkActive{
+    color: #fff;
+}
