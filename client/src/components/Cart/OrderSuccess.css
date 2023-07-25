@@ -1,0 +1,32 @@
+.successContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 90vh;
+}
+
+.successContainer > svg{
+    font-size: 20rem;
+    color: tomato;
+}
+
+.successContainer > p{
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.successContainer > a{
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    outline: none;
+    background-color: tomato;
+    color: #fff;
+    font-size: 2rem;
+    padding: 1.5rem 5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: 0.5s all ease;
+}

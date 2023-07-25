@@ -1,0 +1,60 @@
+.myOrderContainer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    background-color: rgb(235, 235, 235);
+}
+
+.myOrderTable{
+    margin: 10rem;
+    margin-bottom: 0;
+    background-color: #fff;
+    font-size: 1.6rem !important;
+}
+
+.myOrderContainer > p{
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding: 2rem 0;
+    margin: 0 10rem;
+}
+
+.MuiTablePagination-root p{
+    font-size: 1.4rem;
+}
+
+.MuiTablePagination-root svg{
+    font-size: 2rem;
+}
+
+.MuiDataGrid-cell--withRenderer svg{
+    font-size: 2rem;
+    color: #767676;
+    transition: 0.5s all ease;
+}
+
+.MuiDataGrid-cell--withRenderer a:hover svg{
+    color: tomato;
+}
+
+.MuiDataGrid-columnHeaders{
+    background-color: tomato;
+    color: #fff;
+}
+
+.MuiDataGrid-columnHeaders div{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.MuiDataGrid-menuIcon{
+    display: none !important;
+}

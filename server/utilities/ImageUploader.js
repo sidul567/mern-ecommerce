@@ -4,7 +4,6 @@ const path = require('path');
 
 const uploader = (
     maxFileSize,
-    allowMimeType,
     errorMessage
 )=>{
     const storage = multer.diskStorage({
@@ -21,7 +20,7 @@ const uploader = (
             'fileSize': maxFileSize,
         },
         'fileFilter': (req, file, cb)=>{
-            if(allowMimeType.includes(file.mimetype)){
+            if(file.mimetype.startsWith('image/')){
                 cb(null, true);
             }else{
                 cb(new ErrorHandler(errorMessage, 501));

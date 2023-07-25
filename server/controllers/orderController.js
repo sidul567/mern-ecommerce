@@ -4,10 +4,16 @@ const catchAsyncError = require('../middlewares/catchAsyncError');
 const Product = require('../models/productModel');
 
 const newOrder = catchAsyncError(async (req, res, next)=>{
-    const {shippingInfo, orderItems, paymentInfo, itemPrice, taxPrice, shippingPrice, totalPrice} = req.body;
+    const {shippingInfo, orderItems, paymentInfo, itemPrice, vat, shippingPrice, totalPrice} = req.body;
 
     const order = await Order.create({
-        shippingInfo, orderItems, paymentInfo, itemPrice, taxPrice, shippingPrice, totalPrice,
+        shippingInfo, 
+        orderItems, 
+        paymentInfo, 
+        itemPrice, 
+        vat, 
+        shippingPrice, 
+        totalPrice,
         paidAt: Date.now(),
         user: req.user.id,
     })
@@ -32,15 +38,15 @@ const getSingleOrder = catchAsyncError(async (req, res, next)=>{
 })
 
 const myOrders = catchAsyncError(async (req, res, next)=>{
-    const order = await Order.find({user: req.user.id});
+    const orders = await Order.find({user: req.user.id});
 
-    if(!order){
-        return next(new ErrorHandler("Order not found!",404));
+    if(!orders){
+        return next(new ErrorHandler("Orders not found!",404));
     }
 
     res.status(200).json({
         success: true,
-        order
+        orders
     })
 })
 
@@ -66,17 +72,17 @@ const updateOrder = catchAsyncError(async (req, res, next)=>{
         return next(new ErrorHandler("Order not found!",404));
     }
 
-    if(order.orderStatus === "delivered"){
+    if(order.orderStatus === "Delivered"){
         return next(new ErrorHandler("You have been already delivered this order!",404));
     }
 
     order.orderItems.forEach(async (item)=>{
-        await updateStock(item.product, item.quantity);
+        await updateStock(item.productId, item.quantity);
     })
 
     order.orderStatus = req.body.status;
 
-    if(order.orderStatus === "delivered"){
+    if(order.orderStatus === "Delivered"){
         order.deliveredAt = Date.now();
     }
 
@@ -90,10 +96,6 @@ const updateOrder = catchAsyncError(async (req, res, next)=>{
 
 async function updateStock(productId, quantity){
     const product = await Product.findById(productId);
-
-    if(!product){
-        return next(new ErrorHandler("Product not found!",404));
-    }
 
     product.stock -= quantity;
 

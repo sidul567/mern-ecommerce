@@ -1,11 +1,10 @@
 const ErrorHandler = require('../utilities/errorHandler');
-const uploader = require('../utilities/singleFileUploader');
+const uploader = require('../utilities/ImageUploader');
 
 const avatarUpload = (req,res,next)=>{
     const upload = uploader(
         100000, 
-        ['image/jpg', 'image/png', 'image/jpeg'],
-        "Only jpg, png and jpeg are allowed!"
+        "Only images are allowed!"
     );
 
     upload.any()(req, res, (err)=>{

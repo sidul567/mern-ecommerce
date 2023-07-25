@@ -1,0 +1,7 @@
+.reviewListContainer{
+    height: 100%;
+}
+
+.reviewListContainer form{
+    min-height: 50%;
+}

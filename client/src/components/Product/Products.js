@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Loader from '../layout/Loader/Loader'
-import { getProducts } from '../../actions/productAction';
+import { clearErrors, getProducts } from '../../actions/productAction';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../Home/ProductCard';
@@ -25,6 +25,7 @@ function Products() {
     useEffect(() => {
         if (error) {
             toast.error(error);
+            dispatch(clearErrors);
         }
         dispatch(getProducts(keyword, currentPage, price, category, ratings));
     }, [dispatch, error, keyword, currentPage, price, category, ratings])

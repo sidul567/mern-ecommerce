@@ -1,0 +1,75 @@
+.dashboard{
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding: 7rem;
+}
+
+.dashboardContainer{
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    padding: 3rem;
+}
+
+.dashboardContainer h1{
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.73);
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.dashboardSummary{
+    margin: 2rem 0;
+}
+
+.dashboardSummary > div{
+    display: flex;
+    justify-content: center;
+} 
+
+.dashboardSummary > div > p{
+    background-color: rgba(70, 117, 218, 0.932);
+    width: 100%;
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+    padding: 1.6rem;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.dashboardSummary2 > a{
+    width: 10rem;
+    height: 10rem;
+    background-color: rgb(255, 233, 174);
+    margin: 2rem;
+    padding: 1.5rem;
+    font-size: 2rem;
+    text-decoration: none;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 300;
+    color: #000;
+}
+
+.dashboardSummary2 > a:first-child{
+    background-color: tomato;
+    color: #fff;
+}
+.dashboardSummary2 > a:last-child{
+    background-color: limegreen;
+    color: #fff;
+}
+
+.dashboardContainer .lineChart{
+    width: 80%;
+    margin: auto;
+}
+
+.dashboardContainer .doughnut{
+    width: 30rem;
+    margin: auto;
+}

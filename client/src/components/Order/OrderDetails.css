@@ -1,0 +1,67 @@
+.orderDetailsContainer{
+    display: flex;
+    min-height: 55vh;
+    padding: 10rem;
+    gap: 5rem;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.orderDetailsContainer h3{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.orderDetailsContainer .orderTitle h2{
+    font-size: 4rem;
+    color: tomato;
+}
+
+.orderDetailsContainer > .side1{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.info > p{
+    font-size: 1.6rem;
+    color: rgba(0, 0, 0, 0.62);
+    display: flex;
+    justify-content: space-between;
+    width: 36%;
+    margin-bottom: .5rem;
+    margin-left: 2rem;
+}
+
+.info > p > span{
+    display: inline-block;
+    width: 20rem;
+}
+
+.orderItemsContainer{
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 1rem;
+}
+
+.orderItem{
+    display: grid;
+    grid-template-columns: 1fr 5fr 4fr;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.orderItem > img{
+    width: 5rem;
+}
+
+.orderItem > p{
+    font-size: 1.6rem;
+}
+
+.orderItem > p:last-child{
+    justify-self: end;
+}

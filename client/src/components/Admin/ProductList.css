@@ -1,0 +1,55 @@
+.productsListContainer{
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    padding: 3rem;
+}
+
+.productsListContainer h1{
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.73);
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.productListTable{
+    margin-bottom: 0;
+    background-color: #fff;
+    font-size: 1.6rem !important;
+}
+
+.productListTable a, .productListTable button{
+    color: rgba(0, 0, 0, 0.527) !important;
+    transition: all 0.5s;
+}
+
+.MuiTablePagination-root p{
+    font-size: 1.4rem;
+}
+
+.MuiTablePagination-root svg{
+    font-size: 2rem;
+}
+
+.MuiDataGrid-cell--withRenderer svg{
+    font-size: 2rem;
+    color: #767676;
+    transition: 0.5s all ease;
+}
+
+.MuiDataGrid-cell--withRenderer a:hover svg, .productListTable button:hover svg{
+    color: tomato;
+}
+
+.MuiDataGrid-columnHeaders{
+    background-color: tomato;
+    color: #fff;
+}
+
+.MuiDataGrid-columnHeaders div{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.MuiDataGrid-menuIcon{
+    display: none !important;
+}

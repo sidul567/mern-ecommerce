@@ -1,0 +1,33 @@
+.cartItemCard{
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1rem;
+}
+
+.cartItemCard > img{
+    width: 5rem;
+}
+
+.cartItemCard > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.cartItemCard > div > a{
+    text-decoration: none;
+    font-family: cursive;
+    font-size: 1.8rem;
+    color: rgba(0,0,0,0.8);
+}
+
+.cartItemCard > div > span{
+    font-size: 1.8rem;
+    color: rgba(24, 24, 24, 0.815);
+}
+
+.cartItemCard > div > p{
+    font-size: 1.4rem;
+    color: tomato;
+    cursor: pointer;
+}

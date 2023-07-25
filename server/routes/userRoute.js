@@ -12,7 +12,7 @@ router.post('/password/forget', forgetPassword);
 router.put('/password/reset/:token',resetPassword);
 router.get('/me', isAuthenticateUser, getUserDetails);
 router.put('/password/update', isAuthenticateUser, updatePassword);
-router.put('/me/update', isAuthenticateUser, updateProfile);
+router.put('/me/update', isAuthenticateUser, avatarUpload, updateProfile);
 router.get('/admin/users', isAuthenticateUser, authorizedRoles("admin"), getAllUsers);
 router.get('/admin/user/:id', isAuthenticateUser, authorizedRoles("admin"), getSingleUser);
 router.put('/admin/user/:id', isAuthenticateUser, authorizedRoles("admin"), updateUserRole);

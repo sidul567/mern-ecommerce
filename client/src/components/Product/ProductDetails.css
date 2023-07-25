@@ -79,7 +79,7 @@
     background-color: rgba(0,0,0,0.797);
 }
 .detailsBlock3-1-1 > input{
-    width: 2rem;
+    width: 2.2rem;
     outline: none;
     border: none;
     padding: 0.5rem 1rem;
@@ -124,6 +124,32 @@
 .submitReview:hover{
     background-color: rgb(214,84,81);
     transform: scale(1.1);
+}
+
+.MuiDialogTitle-root{
+    font-size: 2rem !important;
+}
+
+.MuiDialogActions-root button{
+    font-size: 1.3rem;
+}
+
+.submitDialog{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+
+.submitDialog .ratingStar{
+    font-size: 2.5rem !important;
+}
+
+.submitDialog .submitReviewTextarea{
+    border: 1px solid rgba(0,0,0, 0.1);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    outline: none;
 }
 
 .reviews{

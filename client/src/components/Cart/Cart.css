@@ -1,0 +1,119 @@
+.emptyCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 90vh;
+}
+
+.emptyCard > svg{
+    font-size: 10rem;
+    color: tomato;
+    margin-bottom: 1rem;
+}
+
+.emptyCard > p{
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.emptyCard > a{
+    text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 4rem;
+    font-size: 2.5rem;
+}
+
+.cartPage{
+    padding: 10rem 5rem;
+    min-height: 50vh;
+}
+
+.cartHeader{
+    width: 100%;
+    background-color: tomato;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartHeader > p{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.cartContainer{
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartContainer > .cartInput, .cartContainer > .cartSubtotal{
+    padding: 1.5rem;
+}
+
+.cartContainer > .cartInput > button{
+    background-color: rgba(0,0,0,0.616);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+    transition: 0.1s all ease;
+    color: #fff;
+}
+.cartContainer > .cartInput > button:hover{
+    background-color: rgba(0,0,0,0.797);
+}
+.cartContainer > .cartInput > input{
+    width: 2.2rem;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+}
+
+.cartContainer > .cartSubtotal{
+    font-size: 1.8rem;
+}
+
+.grossTotal{
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.grossTotal > .grossProfitBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 2px solid tomato;
+}
+
+.grossTotal > .grossProfitBox > p{
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 1.5rem;
+}
+
+.grossTotal > .checkOut{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.grossTotal > .checkOut > button{
+    outline: none;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background-color: tomato;
+    color: #fff;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.grossTotal > .checkOut > button:hover{
+    background-color: rgb(214,84,81);
+}

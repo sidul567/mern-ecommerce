@@ -1,0 +1,17 @@
+.MuiStepper-root{
+    position: relative;
+    margin-top: 3rem;
+    z-index: 1;
+}
+
+.MuiStepLabel-iconContainer > svg{
+    font-size: 3rem;
+}
+
+.MuiStepLabel-label > p{
+    font-size: 1.6rem;
+}
+
+.Mui-active > span, .Mui-completed > span{
+    border-color: tomato;
+}

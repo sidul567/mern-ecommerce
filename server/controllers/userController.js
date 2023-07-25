@@ -57,7 +57,6 @@ const logoutUser = catchAsyncError(async (req, res, next) => {
 
 const forgetPassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
-
     if (!user) {
         return next(new ErrorHandler("Invalid email or password!", 401));
     }
@@ -67,8 +66,8 @@ const forgetPassword = catchAsyncError(async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
 
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetPasswordToken}`;
-
+    const resetPasswordUrl = `${req.get("origin")}/password/reset/${resetPasswordToken}`;
+    console.log(resetPasswordUrl);
     const message = `Your password reset link is: \n\n${resetPasswordUrl}\n\nIf you aren't sent this request then ignore it. Link will be destroy after 15 minutes!`;
 
     try {
@@ -105,11 +104,11 @@ const resetPassword = catchAsyncError(async (req, res, next) => {
         return next(new ErrorHandler("Invalid or expired token!", 400));
     }
 
-    if (req.body.password !== req.body.confirmPassword) {
+    if (req.body.newPassword !== req.body.confirmPassword) {
         return next(new ErrorHandler("Password don't match!", 400));
     }
 
-    user.password = req.body.password;
+    user.password = req.body.newPassword;
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
     await user.save();
@@ -132,11 +131,11 @@ const updatePassword = catchAsyncError(async (req, res, next) => {
     const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
 
     if (!isPasswordMatched) {
-        return next(new ErrorHandler("Old password don't match", 400));
+        return next(new ErrorHandler("Old password doesn't match", 400));
     }
 
     if (req.body.newPassword !== req.body.confirmPassword) {
-        return next(new ErrorHandler("Password don't match", 400));
+        return next(new ErrorHandler("New Password and Confirm Password don't match!", 400));
     }
 
     user.password = req.body.newPassword;
@@ -149,11 +148,24 @@ const updatePassword = catchAsyncError(async (req, res, next) => {
 })
 
 const updateProfile = catchAsyncError(async (req, res, next) => {
+    const {name, email} = req.body;
     const updateUserData = {
-        name: req.body.name,
-        email: req.body.email
+        name,
+        email
     }
+    if(req.body.avatar !== ""){
+        const user = await User.findById(req.user.id);
+        const publicId = user.avatar.public_id;
 
+        await cloudinary.uploader.destroy(publicId);
+
+        const myCloud = await cloudinary.uploader.upload(req.files[0].path,{'folder': 'avatars',});
+
+        updateUserData.avatar = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url,
+        }
+    }
     const user = await User.findByIdAndUpdate(req.user.id, updateUserData, {
         new: true,
         runValidators: true,
@@ -209,6 +221,10 @@ const deleteUser = catchAsyncError(async (req, res, next) => {
     }
 
     await user.deleteOne();
+
+    const publicId = user.avatar.public_id;
+
+    await cloudinary.uploader.destroy(publicId);
 
     res.status(200).json({
         success: true,

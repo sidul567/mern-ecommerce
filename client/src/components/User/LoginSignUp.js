@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FaceOutlined, LockOpenOutlined, MailOutline } from '@mui/icons-material';
-import { Link, useNavigate } from 'react-router-dom';
+import { FaceOutlined, LockOpenOutlined, MailOutline, RemoveRedEyeOutlined, VisibilityOffOutlined } from '@mui/icons-material';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LoginSignUp.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, loginAction, signUpAction } from '../../actions/userAction';
@@ -23,7 +23,10 @@ function LoginSignUp() {
     })
     const [avatar, setAvatar] = useState("/profile.jpg");
     const [avatarPreview, setAvatarPreview] = useState("profile.jpg");
-
+    const passwordField = useRef("");
+    const [hide, setHide] = useState(true);
+    const location = useLocation();
+    const redirect = location.search ? location.search.split("=")[1] : "account";
     const { name, email, password } = user;
 
     useEffect(() => {
@@ -32,9 +35,9 @@ function LoginSignUp() {
             dispatch(clearErrors());
         }
         if (isAuthenticate) {
-            navigate("/account");
+            navigate("/"+redirect);
         }
-    }, [dispatch, error, isAuthenticate, navigate])
+    }, [dispatch, error, isAuthenticate, navigate, redirect])
 
     const switchTab = (e, tab) => {
         if (tab === 'login') {
@@ -85,6 +88,12 @@ function LoginSignUp() {
         }
     }
 
+    const visiblePassword = ()=>{
+        const type = passwordField.current.getAttribute("type") === "password" ? "text" : "password";
+        passwordField.current.setAttribute("type",type);
+        setHide(!hide);
+    }
+
     return (
         <>
             <div className="loginSignUpContainer">
@@ -105,6 +114,7 @@ function LoginSignUp() {
                                 <input
                                     type="email"
                                     required
+                                    name='email'
                                     placeholder='Email'
                                     value={loginEmail}
                                     onChange={(e) => setLoginEmail(e.target.value)}
@@ -118,9 +128,13 @@ function LoginSignUp() {
                                     placeholder='Password'
                                     value={loginPassword}
                                     onChange={(e) => setLoginPassword(e.target.value)}
+                                    ref={passwordField}
                                 />
+                                {loginPassword && (<>
+                                    {hide ? <RemoveRedEyeOutlined onClick={visiblePassword} /> : <VisibilityOffOutlined onClick={visiblePassword} />}
+                                </>)}
                             </div>
-                            <Link>Forget Password ?</Link>
+                            <Link to="/password/forget">Forget Password ?</Link>
                             <input
                                 type="submit"
                                 value="Login"
@@ -134,6 +148,7 @@ function LoginSignUp() {
                                     type="text"
                                     placeholder='Name'
                                     name='name'
+                                    value={name}
                                     onChange={signUpChange}
                                 />
                             </div>
@@ -144,6 +159,7 @@ function LoginSignUp() {
                                     required
                                     placeholder='Email'
                                     name='email'
+                                    value={email}
                                     onChange={signUpChange}
                                 />
                             </div>
@@ -154,6 +170,7 @@ function LoginSignUp() {
                                     required
                                     placeholder='Password'
                                     name='password'
+                                    value={password}
                                     onChange={signUpChange}
                                 />
                             </div>
