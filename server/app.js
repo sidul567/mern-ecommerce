@@ -18,6 +18,7 @@ dotenv.config({path: "config/.env"});
 app.use(cors({
     'credentials': true,
     'origin': true,
+    'optionsSuccessStatus': 200
 }));
 app.use(express.json());
 app.use(cookieParser());
