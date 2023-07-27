@@ -17,7 +17,7 @@ dotenv.config({path: "config/.env"});
 */
 app.use(cors({
     'credentials': true,
-    'origin': "*",
+    'origin': "https://mern-ecommerce-ashen.vercel.app/",
     'optionsSuccessStatus': 200
 }));
 app.use(express.json());
