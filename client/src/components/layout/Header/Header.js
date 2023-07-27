@@ -6,7 +6,8 @@ function Header() {
   return (
     <ReactNavbar 
       logo = {logo}
-      burgerColorHover="#eb4034"
+      burgerColor="#ff6347"
+      burgerColorHover="#ff6347"
       logoWidth = "20vmax"
       navColor1 = "white"
       logoHoverSize = "10px"
