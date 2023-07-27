@@ -9,11 +9,7 @@ const app = express();
 // Config
 dotenv.config({path: "config/.env"});
 
-app.use(cors({
-    'credentials': true,
-    'origin': "http://localhost:3000",
-    'optionsSuccessStatus': 200
-}));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({'extended': true}));
