@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 // Config
-dotenv.config({path: "server/config/.env"});
+dotenv.config({path: "config/.env"});
 
 app.use(cors({
     'credentials': true,
