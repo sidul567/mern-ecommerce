@@ -17,7 +17,7 @@ dotenv.config({path: "config/.env"});
 */
 app.use(cors({
     'credentials': true,
-    'origin': "https://mern-ecommerce-ashen.vercel.app/",
+    'origin': "https://mern-ecommerce-567.netlify.app/",
     'optionsSuccessStatus': 200
 }));
 app.use(express.json());
