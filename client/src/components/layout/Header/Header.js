@@ -10,7 +10,7 @@ function Header() {
       logoWidth = "20vmax"
       navColor1 = "white"
       logoHoverSize = "10px"
-      logoHoverColor = "#eb4034"
+      logoHoverColor = "rgba(0,0,0,0)"
       link1Text = "Home"
       link2Text = "Products"
       link3Text = "Contact"

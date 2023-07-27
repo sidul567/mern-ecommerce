@@ -85,7 +85,7 @@ function NewProduct() {
         isLoading && <Loader />
     }
     <div className='dashboard'>
-        <Sidebar open={true} />
+        <Sidebar open={true} active="create"/>
         <div className="newProductContainer">
             <form className="newProductForm" onSubmit={createNewProudct} encType='multipart/form-data'>
                 <h1>Create Product</h1>

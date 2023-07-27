@@ -77,7 +77,7 @@ function ProductList() {
   return (
     <div className='dashboard'>
       {isLoading && <Loader />}
-      <Sidebar open={true} />
+      <Sidebar open={true} active="all"/>
       <div className="productsListContainer">
        <h1>All Products</h1>
         <DataGrid

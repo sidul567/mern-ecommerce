@@ -25,7 +25,7 @@ const orderRoute = require('./routes/orderRoute');
 const paymentRoute = require('./routes/PaymentRoute');
 const errorMiddleware = require('./middlewares/error');
 
-app.use('/api/v1',productRoute);
+app.use('/api/v1',productRoute); 
 app.use('/api/v1',userRoute);
 app.use('/api/v1',orderRoute);
 app.use("/api/v1",paymentRoute);

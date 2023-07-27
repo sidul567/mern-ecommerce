@@ -5,12 +5,8 @@
     padding: 4rem 0;
 }
 
-/* .sidebar > a:first-child{
-    padding: 0;
-} */
-
 .sidebar > a > img{
-    width: 4rem;
+    width: 8rem;
     transition: all 0.5s;
 }
 
@@ -49,17 +45,20 @@
 .sidebar ul .css-1g86id8-MuiTreeItem-content:hover .MuiTreeItem-label{
     color: tomato !important;
 }
-/* .MuiTreeItem-content:hover{
-    background-color: transparent !important;
-} */
+
 .MuiTypography-root {
     /* background-color: #fff !important; */
   }
 .MuiTreeItem-label{
     font-size: 1.6rem !important;
     padding-left: 0 !important;
+}
+.Mui-expanded .MuiTreeItem-label, .MuiTreeView-root > li > .MuiTreeItem-content .MuiTreeItem-label{
     color: rgba(0, 0, 0, 0.5);
 }
 .css-1g86id8-MuiTreeItem-content{
     padding: 0 !important;
+}
+.sidebar a.active{
+    color: tomato;
 }

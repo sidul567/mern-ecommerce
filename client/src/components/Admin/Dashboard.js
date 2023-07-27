@@ -73,7 +73,7 @@ function Dashboard() {
 
   return (
     <div className='dashboard'>
-      <Sidebar />
+      <Sidebar active="dashboard" />
       <div className="dashboardContainer">
           <h1>Dashboard</h1>
           <div className="dashboardSummary">

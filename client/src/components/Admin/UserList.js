@@ -80,7 +80,7 @@ function UserList() {
   return (
     <div className='dashboard'>
       {isLoading && <Loader />}
-      <Sidebar open={false} />
+      <Sidebar active="user"/>
       <div className="productsListContainer">
        <h1>All Users</h1>
         <DataGrid

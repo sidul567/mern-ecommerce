@@ -5,13 +5,14 @@ import { Add, Dashboard, ExpandMore, ImportExport, ListAlt, People, PostAdd, Rat
 import {TreeItem, TreeView} from '@mui/lab'
 import './Sidebar.css'
 
-function Sidebar({open}) {
+function Sidebar({open, active}) {
+
   return (
     <div className="sidebar">
         <Link to="/">
             <img src={logo} alt='logo' />
         </Link>
-        <Link to="/admin/dashboard">
+        <Link to="/admin/dashboard" className={active==="dashboard" && "active"}>
             <p>
                 <Dashboard /> Dashboard
             </p>
@@ -22,25 +23,25 @@ function Sidebar({open}) {
             defaultExpanded={open && ['1']}
         >
             <TreeItem nodeId='1' label="Products">
-                <Link to="/admin/products">
-                    <TreeItem nodeId='2' label='All' icon={<PostAdd />} />
+                <Link to="/admin/products" className={active==="all" && "active"}>
+                    <TreeItem nodeId='2' label='All' icon={<PostAdd />}  />
                 </Link>
-                <Link to="/admin/product">
-                    <TreeItem nodeId='3' label='Create' icon={<Add />} />
+                <Link to="/admin/product" className={active==="create" && "active"}>
+                    <TreeItem nodeId='3' label='Create' icon={<Add />}  className={active==="create" && "active"}/>
                 </Link>
             </TreeItem>
         </TreeView>
-        <Link to="/admin/orders">
+        <Link to="/admin/orders" className={active==="order" && "active"}>
             <p>
                 <ListAlt /> Orders
             </p>
         </Link>
-        <Link to="/admin/users">
+        <Link to="/admin/users" className={active==="user" && "active"}>
             <p>
                 <People /> Users
             </p>
         </Link>
-        <Link to="/admin/reviews">
+        <Link to="/admin/reviews" className={active==="review" && "active"}>
             <p>
                 <RateReview /> Reviews
             </p>

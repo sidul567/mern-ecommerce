@@ -1,4 +1,4 @@
-import { AccountBalanceOutlined, LibraryAddCheckOutlined, LocalShippingOutlined } from '@mui/icons-material'
+import { LibraryAddCheckOutlined, LocalShippingOutlined } from '@mui/icons-material'
 import { Step, StepLabel, Stepper, Typography } from '@mui/material'
 import React from 'react'
 import './CheckoutStep.css';

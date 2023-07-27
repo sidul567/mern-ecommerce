@@ -19,10 +19,8 @@ function Home() {
   }, [dispatch, error])
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
+      {isLoading && <Loader />}
+      <>
           <MetaData title="MERN-ECOMMERCE" />
           <div className="banner">
             <p>Welcome to Mern-Eccomerece</p>
@@ -43,7 +41,6 @@ function Home() {
             ))}
           </div>
         </>
-      )}
     </>
   )
 }

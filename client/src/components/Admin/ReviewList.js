@@ -86,7 +86,7 @@ function ReviewList() {
     <div className='dashboard'>
       {isLoading && <Loader />}
       {reviewLoading && <Loader />}
-      <Sidebar open={false} />
+      <Sidebar active="review" />
       <div className="productsListContainer reviewListContainer">
        <form className="newProductForm" onSubmit={searchProductReview}>
                 <h1>All Reviews</h1>

@@ -79,7 +79,7 @@ function OrderList() {
   return (
     <div className='dashboard'>
       {isLoading && <Loader />}
-      <Sidebar open={false} />
+      <Sidebar active="order" />
       <div className="productsListContainer">
        <h1>All Orders</h1>
         <DataGrid
