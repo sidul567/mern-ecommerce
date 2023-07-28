@@ -77,7 +77,7 @@ export const updateOrderAction = (id, orderData)=> async (dispatch)=>{
             'headers': {
                 'Content-Type': 'application/json',
             },
-            'withCredentials': true,
+            'withCredentials': false,
             'Access-Control-Allow-Origin': 'https://mern-ecommerce-567.netlify.app',
         });
         dispatch({type: UPDATE_ORDER_SUCCESS, payload: data});

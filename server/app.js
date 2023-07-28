@@ -27,7 +27,6 @@ app.use(cors({
         'Content-Type',
         'Authorization',
     ],
-    'exposedHeaders': "access-control-allow-origin,access-control-allow-methods,access-control-allow-headers",
     'optionsSuccessStatus': 200
 }));
 app.use(express.json());
