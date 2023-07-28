@@ -9,10 +9,7 @@ export const getProducts = (keyword="", currentPage=1, price=[0,25000], category
         if(category){
             url = HOST+`/api/v1/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`;
         }
-        const {data} = await axios.get(url,{
-            'Access-Control-Allow-Origin':
-        'https://mern-ecommerce-567.netlify.app',
-        });
+        const {data} = await axios.get(url);
         dispatch({type: PRODUCT_SUCCESS, payload: data});
     }catch(err){
         const error = err.response ? err.response.data.error : err.message;
