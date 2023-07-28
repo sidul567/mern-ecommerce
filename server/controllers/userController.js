@@ -44,17 +44,16 @@ const loginUser = catchAsyncError(async (req, res, next) => {
 })
 
 const logoutUser = catchAsyncError(async (req, res, next) => {
-    res.cookie("token", "null", {
-        expires: new Date(Date.now()),
+    const options = {
         httpOnly: true,
+        expires: new Date(Date.now()),
         secure: true,
         sameSite: 'none',
-    });
-
-    res.status(200).json({
+    }    
+    res.status(statusCode).cookie("token",null,options).json({
         success: true,
         message: "Logged out!"
-    })
+    });
 })
 
 const forgetPassword = catchAsyncError(async (req, res, next) => {
