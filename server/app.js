@@ -17,7 +17,15 @@ dotenv.config({path: "config/.env"});
 */
 app.use(cors({
     'credentials': true,
-    'origin': true,
+    'origin': [
+        "http://localhost:3000",
+        "https://mern-ecommerce-567.netlify.app/",
+    ],
+    'allowedHeaders': [
+        'Access-Control-Allow-Origin',
+        'Content-Type',
+        'Authorization',
+    ],
     'optionsSuccessStatus': 200
 }));
 app.use(express.json());
