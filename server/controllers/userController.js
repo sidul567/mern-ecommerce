@@ -44,7 +44,7 @@ const loginUser = catchAsyncError(async (req, res, next) => {
 })
 
 const logoutUser = catchAsyncError(async (req, res, next) => {
-    res.cookie("token", null, {
+    res.cookie("token", "null", {
         expires: new Date(Date.now()),
         httpOnly: true,
         secure: true,
