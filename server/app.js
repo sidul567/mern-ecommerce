@@ -19,7 +19,7 @@ app.use(cors({
     'credentials': true,
     'origin': [
         "http://localhost:3000",
-        "https://mern-ecommerce-567.netlify.app/",
+        "https://mern-ecommerce-567.netlify.app",
     ],
     'allowedHeaders': [
         'Access-Control-Allow-Origin',
