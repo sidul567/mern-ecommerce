@@ -42,9 +42,6 @@
     color: tomato !important;
 }
 
-.MuiTypography-root {
-    /* background-color: #fff !important; */
-  }
 .MuiTreeItem-label{
     font-size: 1.6rem !important;
     padding-left: 0 !important;
