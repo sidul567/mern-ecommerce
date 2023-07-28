@@ -21,7 +21,7 @@ app.use(cors({
         "http://localhost:3000",
         "https://mern-ecommerce-567.netlify.app",
     ],
-    'methods': ['GET', 'POST', 'PUT', 'DELETE'],
+    'methods': ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     'allowedHeaders': [
         'Access-Control-Allow-Origin',
         'Content-Type',
