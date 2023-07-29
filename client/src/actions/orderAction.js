@@ -75,11 +75,9 @@ export const updateOrderAction = (id, orderData)=> async (dispatch)=>{
         dispatch({type: UPDATE_ORDER_REQUEST});
         const {data} = await axios.put(HOST+`/api/v1//admin/order/${id}`, orderData, {
             'headers': {
-                'Content-Type': 'application/json',
+                'Content-Type': 'multipart/form-data',
             },
             'withCredentials': true,
-            'Access-Control-Allow-Origin': 'https://mern-ecommerce-567.netlify.app',
-            'Access-Control-Allow-Methods': 'PUT, POST, PATCH, DELTE, GET',
         });
         dispatch({type: UPDATE_ORDER_SUCCESS, payload: data});
     }catch(err){
