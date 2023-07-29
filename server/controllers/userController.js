@@ -50,7 +50,7 @@ const logoutUser = catchAsyncError(async (req, res, next) => {
         secure: true,
         sameSite: 'none',
     }    
-    res.status(200).cookie("token","null",options).json({
+    res.status(200).cookie("token",null,options).json({
         success: true,
         message: "Logged out!"
     });
