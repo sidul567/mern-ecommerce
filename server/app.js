@@ -21,7 +21,7 @@ app.use(cors({
         "http://localhost:3000",
         "https://mern-ecommerce-567.netlify.app",
     ],
-    'methods': ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    'methods': ['GET', 'POST'],
 }));
 app.use(express.json());
 app.use(cookieParser());
