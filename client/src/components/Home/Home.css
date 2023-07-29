@@ -121,6 +121,12 @@
 }
 
 @media screen and (max-width: 600px) {
+    .banner{
+        padding-top: 10rem;
+    }
+    .banner::after{
+        padding-top: 10rem;
+    }
     .productCard{
         width: 22vmax;
         text-align: center;

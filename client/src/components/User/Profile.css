@@ -87,3 +87,24 @@
 .profileContainer > div:last-child > div:last-child > a:hover{
     background-color: rgb(31,31,31);
 }
+
+@media screen and (max-width: 600px){
+    .profileContainer{
+        flex-direction: column;
+        height: auto;
+        padding-top: 10rem;
+    }
+    .profileContainer div{
+        height: auto;
+    }
+    .profileContainer > div:last-child > div:last-child {
+        width: 100%;
+    }
+    .profileContainer > div:last-child{
+        gap: 2rem;
+    }
+    .profileContainer > div:first-child > img{
+        width: 25rem;
+        height: 25rem;
+    }
+}

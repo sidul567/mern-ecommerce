@@ -69,3 +69,15 @@ footer{
     cursor: pointer;
     color: #eb4034;
 }
+
+@media screen and (max-width: 600px){
+    .leftFooter > h4 {
+        font-size: 18px;
+    }
+    .leftFooter > p , .midFooter > p, .rightFooter > a{
+        font-size: 10px;
+    }
+    .midFooter > h1 {
+        font-size: 25px;
+    }
+}

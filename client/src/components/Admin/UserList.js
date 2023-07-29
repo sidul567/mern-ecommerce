@@ -48,7 +48,7 @@ function UserList() {
       field: "name", headerName: "Name", minWidth: 150, flex: 0.5, 
     },
     { field: "email", headerName: "Email", minWidth: 250, flex: 0.5 },
-    { field: "role", headerName: "Role", flex: 0.3 , cellClassName: (params) => {
+    { field: "role", headerName: "Role",minWidth: 90, flex: 0.3 , cellClassName: (params) => {
       return params.row.role === "user" ? "redColor" : "greenColor";
     }},
     {

@@ -70,7 +70,7 @@ function Cart() {
                 <div></div>
                 <div className="grossProfitBox">
                     <p>Gross Total</p>
-                    <p>{grossProfit}</p>
+                    <p>${grossProfit}</p>
                 </div>
                 <div></div>
                 <div className="checkOut">

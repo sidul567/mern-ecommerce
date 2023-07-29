@@ -97,3 +97,30 @@
 .side2 > a:hover{
     background-color: rgb(179, 66, 46);
 }
+
+@media screen and (max-width: 600px) {
+    .confirmOrderContainer{
+        padding: 0;
+        padding-top: 1rem;
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        align-items: flex-start;
+    }
+    .confirmOrderContainer > .side1{
+        padding-right: 0;
+        border-right: none;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .userInfo{
+        width: 100%;
+        overflow: hidden;
+    }
+    .confirmOrderContainer .userInfo > p{
+        width: 100%;
+    }
+    .confirmOrderContainer > .side2{
+        width: 100%;
+    }
+}

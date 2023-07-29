@@ -32,3 +32,14 @@
 .searchBox > input[type="submit"]:hover{
     background-color: rgb(5, 138, 255);
 }
+
+
+@media screen and (max-width: 600px) {
+    .searchBox{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .searchBox > input[type="submit"]{
+        width: 65%;
+    }
+}

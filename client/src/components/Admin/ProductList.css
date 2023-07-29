@@ -53,3 +53,11 @@
 .MuiDataGrid-menuIcon{
     display: none !important;
 }
+
+@media screen and (max-width: 600px){
+    .productsListContainer{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+}

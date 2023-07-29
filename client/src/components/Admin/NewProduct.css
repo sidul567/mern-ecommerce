@@ -81,3 +81,9 @@
     font-family: cursive;
     font-size: 1.6rem;
 }
+
+@media screen and (max-width: 600px){
+    .newProductContainer{
+        overflow: hidden;
+    }
+}

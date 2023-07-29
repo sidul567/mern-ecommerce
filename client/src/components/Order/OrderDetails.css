@@ -65,3 +65,13 @@
 .orderItem > p:last-child{
     justify-self: end;
 }
+
+@media screen and (max-width: 600px) {
+    .orderDetailsContainer{
+        padding: 1rem;
+        padding-top: 10rem;
+    }
+    .orderDetailsContainer .orderTitle h2{
+        font-size: 2rem;
+    }
+}

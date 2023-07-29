@@ -5,3 +5,9 @@
 .reviewListContainer form{
     min-height: 50%;
 }
+
+@media screen and (max-width: 600px){
+    .reviewListContainer .newProductForm{
+        width: auto;
+    }
+}

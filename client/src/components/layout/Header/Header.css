@@ -22,3 +22,11 @@
 .MuiTooltip-tooltip{
     font-size: 1.6rem !important;
 }
+
+.nav1{
+    padding-left: 4rem;
+}
+
+.nav4{
+    gap: 1rem;
+}

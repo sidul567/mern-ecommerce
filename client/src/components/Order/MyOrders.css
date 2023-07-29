@@ -58,3 +58,14 @@
 .MuiDataGrid-menuIcon{
     display: none !important;
 }
+
+@media screen and (max-width: 600px) {
+    .myOrderTable{
+        margin: 1rem;
+        margin-top: 10rem;
+    }
+    .myOrderContainer > p{
+        padding: 0.5rem;
+        margin: 0 1rem;
+    }
+}

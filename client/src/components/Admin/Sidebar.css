@@ -50,3 +50,9 @@
 .sidebar a.active{
     color: tomato;
 }
+
+@media screen and (max-width: 600px){
+    .sidebar{
+        padding: 4rem 2rem;
+    }
+}

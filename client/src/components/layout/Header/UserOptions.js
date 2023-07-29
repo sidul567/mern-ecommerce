@@ -41,6 +41,11 @@ function UserOptions({user}) {
     {icon: <ExitToApp />, title: "Log Out", func: logout},
   ]
 
+  const handleSpeedDial = (func)=>{
+    func();
+    setOpen(false);
+  }
+
   if(user.role === "admin"){
     options.unshift({icon: <Dashboard />, title: "Dashboard", func: dashboard})
   }
@@ -62,7 +67,7 @@ function UserOptions({user}) {
                 key={i}
                 icon={option.icon}
                 tooltipTitle={option.title}
-                onClick={option.func}
+                onClick={()=>handleSpeedDial(option.func)}
                 tooltipOpen={window.innerWidth < 600 ? true : false}
             />
         ))}

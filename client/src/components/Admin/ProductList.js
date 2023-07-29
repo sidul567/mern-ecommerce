@@ -42,7 +42,7 @@ function ProductList() {
   }
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 100, flex: 1 },
+    { field: "id", headerName: "Product ID", minWidth: 250, flex: 1 },
     {
       field: "name", headerName: "Name", minWidth: 200, flex: 0.5, 
     },
