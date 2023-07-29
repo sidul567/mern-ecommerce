@@ -29,12 +29,7 @@
 .sidebar a > p > svg{
     margin-right: 0.5rem;
 }
-.sidebar ul{
-    padding: 1rem;
-    padding-bottom: 0.7rem;
-}
-.sidebar ul:hover{
-    padding: 1rem;
+.MuiTreeView-root css-12mehxg{
     padding-bottom: 0.7rem;
 }
 .sidebar ul .css-1g86id8-MuiTreeItem-content:hover,
