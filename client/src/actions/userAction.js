@@ -52,11 +52,6 @@ export const logoutAction = () => async (dispatch)=>{
         dispatch({type: LOGOUT_REQUEST});
         const {data} = await axios.get(HOST+'/api/v1/logout',{
             'withCredentials': true,
-            'crossDomain': true,
-            'headers': {
-                'Access-Control-Allow-Origin':
-                'https://mern-ecommerce-567.netlify.app',
-            }
         });
         dispatch({type: LOGOUT_SUCCESS, payload: data});
     }catch(err){
