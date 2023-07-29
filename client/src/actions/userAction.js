@@ -32,7 +32,7 @@ export const signUpAction = (userInfo) => async (dispatch)=>{
         const error = err.response.data.error ? err.response.data.error : err.message;
         dispatch({type: SIGNUP_FAIL, payload: error});
     }
-}
+} 
 
 export const loadUser = () => async (dispatch)=>{
     try{
