@@ -68,8 +68,6 @@ const getAllOrders = catchAsyncError(async (req, res, next)=>{
 const updateOrder = catchAsyncError(async (req, res, next)=>{
     const order = await Order.findById(req.params.id);
 
-    console.log("Method: "+req.httpMethod);
-
     if(!order){
         return next(new ErrorHandler("Order not found!",404));
     }
