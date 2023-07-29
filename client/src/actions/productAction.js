@@ -90,7 +90,7 @@ export const deleteProductAction = (id)=> async (dispatch)=>{
 export const updateProductAction = (id, productData)=> async (dispatch)=>{
     try{
         dispatch({type: UPDATE_PRODUCT_REQUEST});
-        const {data} = await axios.put(HOST+`/api/v1//admin/product/${id}`, productData, {
+        const {data} = await axios.put(HOST+`/api/v1/admin/product/${id}`, productData, {
             'headers': {
                 'Content-Type': 'multipart/form-data',
             },

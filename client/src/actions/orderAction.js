@@ -73,9 +73,9 @@ export const deleteOrderAction = (id)=> async (dispatch)=>{
 export const updateOrderAction = (id, orderData)=> async (dispatch)=>{
     try{
         dispatch({type: UPDATE_ORDER_REQUEST});
-        const {data} = await axios.put(HOST+`/api/v1//admin/order/${id}`, orderData, {
+        const {data} = await axios.put(HOST+`/api/v1/admin/order/${id}`, orderData, {
             'headers': {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/json',
             },
             'withCredentials': true,
         });
