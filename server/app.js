@@ -22,6 +22,11 @@ app.use(cors({
         "https://mern-ecommerce-567.netlify.app",
     ],
     'methods': ['POST', 'PUT', 'DELETE', 'GET', 'OPTIONS'],
+    'allowedHeaders': [
+        'Access-Control-Allow-Origin',
+        'Content-Type',
+        'Authorization'
+    ]
 }));
 app.use(express.json());
 app.use(cookieParser());
