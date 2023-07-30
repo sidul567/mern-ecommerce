@@ -52,6 +52,8 @@ export const logoutAction = () => async (dispatch)=>{
         dispatch({type: LOGOUT_REQUEST});
         const {data} = await axios.get(HOST+'/api/v1/logout',{
             'withCredentials': true,
+            'mode':'cors',
+            'credentials':'include',
         });
         dispatch({type: LOGOUT_SUCCESS, payload: data});
     }catch(err){
