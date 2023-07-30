@@ -62,6 +62,7 @@ export const logoutAction = () => async (dispatch)=>{
         });
         dispatch({type: LOGOUT_SUCCESS, payload: data});
     }catch(err){
+        console.log(err);
         const error = err.response.data.error ? err.response.data.error : err.message;
         dispatch({type: LOGOUT_FAIL, payload: error});
     }
