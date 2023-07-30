@@ -42,6 +42,7 @@ export const loadUser = () => async (dispatch)=>{
         });
         dispatch({type: LOAD_USER_SUCCESS, payload: data});
     }catch(err){
+        console.log(err);
         if (err.code === 'ECONNABORTED') {
         dispatch({ type: LOAD_USER_FAIL, payload: 'Request timed out' });
         }else{
@@ -62,7 +63,6 @@ export const logoutAction = () => async (dispatch)=>{
         });
         dispatch({type: LOGOUT_SUCCESS, payload: data});
     }catch(err){
-        console.log(err);
         const error = err.response.data.error ? err.response.data.error : err.message;
         dispatch({type: LOGOUT_FAIL, payload: error});
     }
