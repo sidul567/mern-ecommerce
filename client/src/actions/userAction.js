@@ -9,7 +9,6 @@ export const loginAction = (email, password) => async (dispatch)=>{
             'headers': {
                 'Content-Type': 'application/json',
             },
-            'withCredentials': true,
         });
         dispatch({type: LOGIN_SUCCESS, payload: data});
     }catch(err){
