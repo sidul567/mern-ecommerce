@@ -42,8 +42,12 @@ export const loadUser = () => async (dispatch)=>{
         });
         dispatch({type: LOAD_USER_SUCCESS, payload: data});
     }catch(err){
-        const error = err.response.data.error ? err.response.data.error : err.message;
-        dispatch({type: LOAD_USER_FAIL, payload: error});
+        if (err.code === 'ECONNABORTED') {
+        dispatch({ type: LOAD_USER_FAIL, payload: 'Request timed out' });
+        }else{
+            const error = err.response.data.error ? err.response.data.error : err.message;
+            dispatch({type: LOAD_USER_FAIL, payload: error});
+        }
     }
 }
 
