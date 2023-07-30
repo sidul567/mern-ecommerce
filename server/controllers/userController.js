@@ -45,6 +45,7 @@ const loginUser = catchAsyncError(async (req, res, next) => {
 
 const logoutUser = catchAsyncError(async (req, res, next) => {
     const options = {
+        httpOnly: true,
         expires: new Date(Date.now()),
         secure: true,
         sameSite: 'none',
