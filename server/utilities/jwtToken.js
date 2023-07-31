@@ -2,12 +2,12 @@
 const sendToken = (user, statusCode, res)=>{
     const token = user.getJWTToken();
     
-    // const offset = new Date().getTimezoneOffset();
+    const offset = new Date().getTimezoneOffset();
 
     // set cookie option
     const options = {
         httpOnly: true,
-        expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000 - offset * 60 * 1000),
         secure: true,
         sameSite: 'none',
     }    
