@@ -55,7 +55,7 @@ export const loadUser = () => async (dispatch)=>{
 export const logoutAction = () => async (dispatch)=>{
     try{
         dispatch({type: LOGOUT_REQUEST});
-        const {data} = await axios.post(HOST+'/api/v1/logout',{},{
+        const {data} = await axios.get(HOST+'/api/v1/logout',{
             'headers': {
                 'Content-Type': 'application/json',
             },
