@@ -43,7 +43,7 @@ export const loadUser = () => async (dispatch)=>{
         dispatch({type: LOAD_USER_SUCCESS, payload: data});
     }catch(err){
         console.log(err);
-        if (err.code === 'ECONNABORTED') {
+        if (err.code === 'ERR_NETWORK') {
         dispatch({ type: LOAD_USER_FAIL, payload: 'Request timed out' });
         }else{
             const error = err.response.data.error ? err.response.data.error : err.message;
