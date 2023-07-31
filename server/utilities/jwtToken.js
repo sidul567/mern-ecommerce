@@ -3,7 +3,6 @@ const sendToken = (user, statusCode, res)=>{
     const token = user.getJWTToken();
     
     const offset = new Date().getTimezoneOffset();
-    console.log(offset);
 
     // set cookie option
     const options = {
