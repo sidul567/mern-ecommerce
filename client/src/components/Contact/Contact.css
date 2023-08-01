@@ -1,0 +1,71 @@
+.contact_us{
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: rgba(0,0,0,0.1); */
+    margin: 1rem;
+    padding: 3rem 1rem;
+    margin-bottom: 0;
+}
+
+.contact_us .side1 img{
+    width: 15rem;
+}
+
+.contact_us .side2{
+    text-align: center;
+}
+
+.contact_us .side2 svg{
+    font-size: 5rem;
+    color: tomato;
+    margin: 1rem 0;
+}
+
+.contact_us .side2 h2, .contact_us .side3 h2{
+    font-size: 2rem;
+}
+
+.contact_us .side2 a{
+    font-size: 1.6rem;
+    border-top: none;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 1rem;
+    display: block;
+    text-decoration: none;
+}
+
+.contact_us .side2 a:hover{
+    background-color: #fff;
+}
+
+.contact_us .side3 form{
+    padding: 0;
+    height: auto;
+    padding-top: 2rem;
+    gap: 1rem;
+}
+
+.contact_us .side3 form textarea{
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    font-family: cursive;
+    outline: none;
+    resize: none;
+}
+
+@media screen and (max-width: 600px){
+    .contact_us{
+        flex-direction: column;
+        gap: 5rem;
+        align-items: center;
+    }
+    .contact_us .side3 h2{
+        text-align: center;
+    }
+    .homeHeading{
+        width: 50%;
+    }
+}

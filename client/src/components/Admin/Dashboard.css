@@ -56,7 +56,7 @@
 }
 
 .dashboardSummary2 > a:first-child{
-    background-color: tomato;
+    background-color: #ff6347;
     color: #fff;
 }
 .dashboardSummary2 > a:last-child{

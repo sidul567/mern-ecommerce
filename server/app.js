@@ -37,12 +37,14 @@ const productRoute = require('./routes/productRoute');
 const userRoute = require('./routes/userRoute');
 const orderRoute = require('./routes/orderRoute');
 const paymentRoute = require('./routes/PaymentRoute');
+const contactRoute = require('./routes/contactRoute');
 const errorMiddleware = require('./middlewares/error');
 
 app.use('/api/v1',productRoute); 
 app.use('/api/v1',userRoute);
 app.use('/api/v1',orderRoute);
 app.use("/api/v1",paymentRoute); 
+app.use("/api/v1",contactRoute);
 
 // error handler
 app.use(errorMiddleware);

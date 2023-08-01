@@ -38,6 +38,8 @@ import UserList from './components/Admin/UserList';
 import UpdateUser from './components/Admin/UpdateUser';
 import ReviewList from './components/Admin/ReviewList';
 import NotFound from './components/NotFound/NotFound';
+import Contact from './components/Contact/Contact';
+import About from './components/About/About';
 
 function App() {
   const {isAuthenticate, error, user} = useSelector(state=>state.userDetails);
@@ -94,6 +96,8 @@ function App() {
         <Route exact path="/password/forget" element={<ForgetPassword />} />
         <Route exact path="/password/reset/:token" element={<ResetPassword />} />
         <Route exact path='/cart' element={<Cart />} />
+        <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/about' element={<About />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
